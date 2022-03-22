@@ -1,9 +1,13 @@
-<script context="module" lang="ts">
-	export const prerender = true;
-</script>
-
 <script lang="ts">
+	import { beforeNavigate } from '$app/navigation';
+
 	import Counter from '$lib/Counter.svelte';
+
+	beforeNavigate(async () => {
+		console.log('janne');
+		const res = await fetch('https://pokeapi.co/api/v2/pokemon');
+		console.log(await res.json());
+	});
 </script>
 
 <svelte:head>
